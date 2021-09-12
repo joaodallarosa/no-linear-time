@@ -60,7 +60,6 @@ const blotterLetter = function (letter, appendEl) {
     size : 130,
     fill : "#171717"
   }))
-  console.log('Blotter', blotter);
 
   scope.appendTo(appendEl);
 }
