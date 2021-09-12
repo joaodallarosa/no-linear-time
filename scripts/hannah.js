@@ -1,9 +1,25 @@
 
+const phrases = [
+  "Language is the foundation of civilization",
+  "I'm not so sure I believe in beginnings and endings",
+  "Hannah... This is where your story begins",
+  "Memory is a strange thing"
+]
+var firstTimeRun = true;
+var animating = false;
+
 let nonlinearOrtography = function() {
+  if (animating) return;
+
+  animating = true;
   const letterSpacing = 30;
   const fontSize = 24;
 
   var phrase = "There is no linear time";
+  if(!firstTimeRun) {
+    console.log('Phrases', phrases);
+    phrase = phrases[Math.floor(Math.random() * phrases.length)]
+  }
   var written = document.getElementById('written');
   written.innerHTML = "";
   written.style.marginTop = `${window.innerHeight/2 + fontSize}px`;
@@ -26,14 +42,17 @@ let nonlinearOrtography = function() {
     lastEl.style.width = `${0}px`;
     lastEl.innerText = last;
 
-    setTimeout(function timer() {
+    setTimeout(() => {
       written.appendChild(firstEl);
-      if(i !== (phrase.length - (i+1))) {
+      if (i !== (phrase.length - (i+1))) {
         written.appendChild(lastEl);
       }
-    }, i * 400);
-
+      if (i+1 >= phrase.length/2) {
+        animating = false;
+      }
+    }, i * 300);
   }
+  firstTimeRun = false;
 }
 
 const blotterLetter = function (letter, appendEl) {
