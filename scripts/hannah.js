@@ -84,12 +84,13 @@ const blotterLetter = function (letter, appendEl) {
 window.onload = function() {
   var audio = new Audio('/assets/music.webm');
   audio.load();
-  audio.play();
   document.body.addEventListener('mousedown', (e) => {
+      audio.play();
       nonlinearOrtography();
   })
   document.body.addEventListener('keyup', (e) => {
     if(e.code === 'Space'){
+      audio.play();
       nonlinearOrtography();
     }
   })
