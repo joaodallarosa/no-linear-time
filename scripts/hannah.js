@@ -1,4 +1,3 @@
-
 const phrases = [
   "Language is the foundation of civilization",
   "I'm not so sure I believe in beginnings and endings",
@@ -14,7 +13,6 @@ let nonlinearOrtography = function() {
   animating = true;
   const letterSpacing = 30;
   const fontSize = 24;
-
   var phrase = "There is no linear time";
   if(!firstTimeRun) {
     console.log('Phrases', phrases);
@@ -50,7 +48,7 @@ let nonlinearOrtography = function() {
       if (i+1 >= phrase.length/2) {
         animating = false;
       }
-    }, i * 300);
+    }, i * 200);
   }
   firstTimeRun = false;
 }
@@ -84,10 +82,21 @@ const blotterLetter = function (letter, appendEl) {
 }
 
 window.onload = function() {
+  var audio = new Audio('/assets/music.webm');
+  audio.load();
+  audio.play();
   document.body.addEventListener('mousedown', (e) => {
       nonlinearOrtography();
   })
-  blotterLetter('hannah', document.getElementById('title'));
+  document.body.addEventListener('keyup', (e) => {
+    if(e.code === 'Space'){
+      nonlinearOrtography();
+    }
+  })
+
+  if (Blotter !== undefined) {
+    blotterLetter('hannah', document.getElementById('title'));
+  }
   particlesJS.load('particles-js', '/scripts/particlesjs-config.json', function() {
     console.log('callback - particles.js config loaded');
   });
