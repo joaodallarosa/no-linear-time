@@ -20,7 +20,7 @@ let nonlinearOrtography = function() {
   }
   var written = document.getElementById('written');
   written.innerHTML = "";
-  written.style.marginTop = `${window.innerHeight/2 + fontSize}px`;
+  written.style.marginTop = `${window.innerHeight/2 - fontSize}px`;
   written.style.marginLeft = `${window.innerWidth/2 - (phrase.length * letterSpacing / 2)}px`;
   document.body.appendChild(written);
   for (let i = 0; i < phrase.length/2; i++) {
