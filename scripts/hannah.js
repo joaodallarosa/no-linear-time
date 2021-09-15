@@ -1,8 +1,39 @@
 const phrases = [
-  "Language is the foundation of civilization",
-  "I'm not so sure I believe in beginnings and endings",
-  "Hannah... This is where your story begins",
-  "Memory is a strange thing"
+  "O Bruno prefere perguntar a cada 6 meses",
+  "Tu não tá me ajudando hahahah",
+  "tenho que atender a porta aqui",
+  "Muito show Thiago!",
+  "seus hackerzinho",
+  "Manoo, documentação do strapi é muito boa",
+  "Pessoal, alguém tem um curso bom de Vue para indicar?",
+  "diz pra mim que tem jQuery por favor",
+  "A Cara de julgamento do Floriano é a melhor",
+  "Meu time (que agora é do bruno) é lindo",
+  "Gente, não sei quem foi, mas pode chamar sempre que precisar",
+  "Muitissimo obrigada",
+  "BEM VINDOSSS!!!",
+  "esse é pior que a galinha de armadura",
+  "onde eu acho o peixe?",
+  "Só tem artista como front",
+  "Se prepara que toda edição tem essas doideiras",
+  "acho que não fui convidado",
+  "Sim, o time técnico mandou benzasso",
+  "é isso, tem que aprender com os erros tbm",
+  "pq o joao começou a fazer a reuniao? kkk nera o Bruno",
+  "yuujd0xhhh´",
+  "qdo vi isso a primeira vez, até assustei",
+  "Nao, meu cachorro tava latindo aqui do lado",
+  "Cara, faço nem ideia de como faz isso",
+  "to deprimida demais pra xingar",
+  "e nóis alinhando div",
+  "https://codepen.io/jackiecard/pen/abpMwdW",
+  "respeita que aqui é barça",
+  "Galinha do zodíaco",
+  "robococóp",
+  "galinha blindada kkkkkkk",
+  "Me deixa",
+  "Fiz um comentario com o mic ligado",
+  "hoje não vão gravar a apresentação?"
 ]
 var firstTimeRun = true;
 var animating = false;
@@ -15,7 +46,6 @@ let nonlinearOrtography = function() {
   const fontSize = 24;
   var phrase = "There is no linear time";
   if(!firstTimeRun) {
-    console.log('Phrases', phrases);
     phrase = phrases[Math.floor(Math.random() * phrases.length)]
   }
   var written = document.getElementById('written');
@@ -81,8 +111,21 @@ const blotterLetter = function (letter, appendEl) {
   scope.appendTo(appendEl);
 }
 
+
 window.onload = function() {
   var audio = new Audio('/assets/music.webm');
+  const speakerEl = document.querySelector('#speaker');
+  speakerEl.addEventListener('click', e => {
+    e.preventDefault();
+    if (speakerEl.classList.contains('mute')) {
+      speakerEl.classList.remove('mute');
+      audio.muted = false;
+      return
+    }
+    speakerEl.classList.add('mute');
+    audio.muted = true;
+  });
+  
   audio.load();
   document.body.addEventListener('mousedown', (e) => {
       audio.play();
